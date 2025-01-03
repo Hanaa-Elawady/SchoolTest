@@ -1,0 +1,84 @@
+    <main class="container register min-vh-100 hstack">
+        <section class="register-area shadow w-100 rounded overflow-hidden">
+           <div class="row g-0">
+
+              <div class="col-lg-5 d-none d-md-block">
+                 <div class="image"></div>
+              </div>
+
+              <div class="col-lg-7">
+                 <div class="p-4">
+
+                    <header class="text-center">
+                       <img src="../../../assets/images/logo-sm.png" alt="logo School"  width="200px"/>
+                       <h1>Register to School</h1>
+                    </header>
+
+                    <form action="" [formGroup]="registerForm" (submit)="handleForm()" class="row g-3 my-4" id="register">
+
+                     <div class="col-md-12">
+                        <div class="form-data">
+                         <label class="text-capitalize py-2" for="displayName">Name :</label>
+                         <input type="displayName" id="displayName" class="form-control" formControlName="displayName" #displayName>    
+                         <div *ngIf="registerForm.get('displayName')?.errors &&(registerForm.get('displayName')?.touched || displayName.value.length>0)" class="alert alert-danger" >
+                             <p *ngIf="registerForm.get('displayName')?.getError('required')" >displayName Required</p>
+                             <p *ngIf="registerForm.get('displayName')?.getError('displayName')">not valid displayName format</p>
+                         </div> 
+                        </div>
+                     </div>
+
+                       <div class="col-md-12">
+                          <div class="form-data">
+                           <label class="text-capitalize py-2" for="email">email :</label>
+                           <input type="email" id="email" class="form-control" formControlName="email" #email>    
+                           <div *ngIf="registerForm.get('email')?.errors &&(registerForm.get('email')?.touched || email.value.length>0)" class="alert alert-danger" >
+                               <p *ngIf="registerForm.get('email')?.getError('required')" >Email Required</p>
+                               <p *ngIf="registerForm.get('email')?.getError('email')">not valid email format</p>
+                           </div> 
+                          </div>
+                       </div>
+
+                       <div class="col-md-6">
+                        <div class="form-data">
+                         <label class="text-capitalize py-2" for="password">password :</label>
+                         <input type="password" id="password" class="form-control" formControlName="password" #password>
+                         <div *ngIf="registerForm.get('password')?.errors &&(registerForm.get('password')?.touched || password.value.length > 0) " class="alert alert-danger">
+                             <p *ngIf="registerForm.get('password')?.getError('required')" >password Required</p>
+                             <p *ngIf="registerForm.get('password')?.getError('pattern')">not valid password format</p>
+                         </div> 
+                        </div>
+                     </div>
+
+                       <div class="col-md-6">
+                          <div class="form-data">
+                           <label class="text-capitalize py-2" for="confirmPassword">confirmPassword :</label>
+                           <input type="password" id="confirmPassword" class="form-control" formControlName="confirmPassword" #confirmPassword>
+                           <div *ngIf="registerForm.get('confirmPassword')?.errors &&(registerForm.get('confirmPassword')?.touched || confirmPassword.value.length > 0) " class="alert alert-danger">
+                               <p *ngIf="registerForm.get('confirmPassword')?.getError('required')" >confirmPassword Required</p>
+                               <p *ngIf="registerForm.get('confirmPassword')?.getError('pattern')">not valid confirmPassword format</p>
+                           </div> 
+                          </div>
+                       </div>
+
+                       <div class="col-md-12">
+                        <div class="form-data">
+                         <label class="text-capitalize py-2" for="phoneNumber">phoneNumber :</label>
+                         <input type="text" id="phoneNumber" class="form-control" formControlName="phoneNumber" #phoneNumber>
+                         <div *ngIf="registerForm.get('phoneNumber')?.errors &&(registerForm.get('phoneNumber')?.touched || phoneNumber.value.length > 0) " class="alert alert-danger">
+                             <p *ngIf="registerForm.get('phoneNumber')?.getError('required')" >phoneNumber Required</p>
+                             <p *ngIf="registerForm.get('phoneNumber')?.getError('pattern')">not valid phoneNumber format</p>
+                         </div> 
+                        </div>
+                     </div>
+
+                       <button [disabled]="registerForm.invalid" class="main-btn d-block ms-auto text-capitalize" >
+                        <i *ngIf="isLoading" class="fas fa-spinner"></i>
+                        Register</button>
+
+                    </form>
+
+                 </div>
+              </div>
+           </div>
+        </section>
+     </main>

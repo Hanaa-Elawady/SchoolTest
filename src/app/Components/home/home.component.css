@@ -1,0 +1,42 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.category {
+    height: 80vh;
+    flex: 1;
+    min-width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.category img {
+    width: 100%;
+    display: block;
+}
+
+.category-content {
+    padding: 15px;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .categories {
+        flex-direction: column;
+    }
+
+    .category {
+        min-width: 100%;
+    }
+}

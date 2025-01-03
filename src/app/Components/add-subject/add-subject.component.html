@@ -1,0 +1,40 @@
+<div class="container">
+    <form action="" [formGroup]="addSubject" (submit)="handleForm()" class="row g-3 my-4" id="register">
+        
+        <div class="col-md-12">
+            <div class="form-data">
+                <label class="text-capitalize py-2" for="name">Subject Name:</label>
+                <input type="text" id="name" class="form-control" formControlName="name">
+                <div *ngIf="addSubject.get('name')?.errors && (addSubject.get('name')?.touched)" class="alert alert-danger">
+                    <p *ngIf="addSubject.get('name')?.getError('required')">Subject Name Required</p>
+                </div>
+            </div>
+        </div>
+  
+        <div class="col-md-12">
+            <div class="form-data">
+                <label class="text-capitalize py-2" for="creditHours">Credit Hours:</label>
+                <input type="number" id="creditHours" class="form-control" formControlName="creditHours">
+                <div *ngIf="addSubject.get('creditHours')?.errors && (addSubject.get('creditHours')?.touched)" class="alert alert-danger">
+                    <p *ngIf="addSubject.get('creditHours')?.getError('required')">Credit Hours Required</p>
+                    <p *ngIf="addSubject.get('creditHours')?.getError('min')">Must be at least 1 hour</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-12">
+            <div class="form-data">
+                <label class="text-capitalize py-2" for="description">Description:</label>
+                <textarea id="description" rows="3" class="form-control" formControlName="description"></textarea>
+                <div *ngIf="addSubject.get('description')?.errors && (addSubject.get('description')?.touched)" class="alert alert-danger">
+                    <p *ngIf="addSubject.get('description')?.getError('required')">Description Required</p>
+                </div>
+            </div>
+        </div>
+
+        <button [disabled]="addSubject.invalid" class="main-btn d-block ms-auto text-capitalize">
+            <i *ngIf="isLoading" class="fas fa-spinner"></i>
+            Add
+        </button>
+    </form>
+</div>

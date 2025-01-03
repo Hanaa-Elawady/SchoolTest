@@ -1,0 +1,55 @@
+
+<main class="container login min-vh-100 hstack">
+    <section class="login-area shadow w-100 rounded overflow-hidden">
+       <div class="row g-0">
+
+          <div class="col-lg-5 d-none d-md-block">
+             <div class="image"></div>
+          </div>
+
+          <div class="col-lg-7">
+             <div class="p-4">
+
+                <header class="text-center">
+                   <img width="200px" src="../../../assets/images/logo-sm.png" alt="logo School" />
+                   <h1>LogIn to School</h1>
+                </header>
+
+                <form action="" [formGroup]="loginForm" (submit)="handleForm()" class="row g-3 my-4" id="login">
+
+                   <div class="col-12">
+                      <div class="form-data">
+                        <label class="text-capitalize py-2" for="email">email :</label>
+                        <input type="email" id="email" class="form-control" formControlName="email" #email>    
+                        <div *ngIf="loginForm.get('email')?.errors &&(loginForm.get('email')?.touched || email.value.length>0)" class="alert alert-danger" >
+                            <p *ngIf="loginForm.get('email')?.getError('required')" >Email Required</p>
+                            <p *ngIf="loginForm.get('email')?.getError('email')">not valid email format</p>
+                        </div> 
+                      </div>
+                   </div>
+
+                   <div class="col-12">
+                      <div class="form-data">
+                        <label class="text-capitalize py-2" for="password">password :</label>
+                        <input type="password" id="password" class="form-control" formControlName="password" #password>
+                        <div *ngIf="loginForm.get('password')?.errors &&(loginForm.get('password')?.touched || password.value.length > 0) " class="alert alert-danger">
+                            <p *ngIf="loginForm.get('password')?.getError('required')" >password Required</p>
+                            <p *ngIf="loginForm.get('password')?.getError('pattern')">not valid password format</p>
+                        </div> 
+                      </div>
+                   </div>
+                   <div class="mb-2 w-75 mx-auto">
+                     <p *ngIf="msgError" class="alert alert-danger">{{msgError}}</p>
+                     </div>
+
+                   <button [disabled]="loginForm.invalid" class="main-btn d-block ms-auto text-capitalize" >
+                     <i *ngIf="isLoading" class="fas fa-spinner"></i>
+                     login</button>
+                </form>
+
+
+             </div>
+          </div>
+       </div>
+    </section>
+ </main>

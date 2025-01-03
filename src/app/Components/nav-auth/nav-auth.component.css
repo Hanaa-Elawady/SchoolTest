@@ -1,0 +1,14 @@
+.common {
+    color: white;
+    border: none;
+}
+.btn-main{
+    background-color: #3AB6AA;   
+}
+.btn-sec{
+    background-color: #A4C7C4;   
+}
+
+button{
+    white-space: nowrap;
+}

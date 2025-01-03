@@ -1,0 +1,87 @@
+<div class="container">
+
+    <form action="" [formGroup]="addStudent" (submit)="handleForm()" class="row g-3 my-4" id="register">
+        
+        <div class="col-md-6">
+            <div class="form-data">
+                <label class="text-capitalize py-2" for="firstName">First Name:</label>
+                <input type="text" id="firstName" class="form-control" formControlName="firstName">
+                <div *ngIf="addStudent.get('firstName')?.errors && (addStudent.get('firstName')?.touched)" class="alert alert-danger">
+                    <p *ngIf="addStudent.get('firstName')?.getError('required')">First Name Required</p>
+                </div>
+            </div>
+    </div>
+  
+    <div class="col-md-6">
+        <div class="form-data">
+            <label class="text-capitalize py-2" for="lastName">Last Name:</label>
+            <input type="text" id="lastName" class="form-control" formControlName="lastName">
+            <div *ngIf="addStudent.get('lastName')?.errors && (addStudent.get('lastName')?.touched)" class="alert alert-danger">
+                <p *ngIf="addStudent.get('lastName')?.getError('required')">Last Name Required</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="form-data">
+            <label class="text-capitalize py-2" for="dateOfBirth">Date of Birth:</label>
+            <input type="date" id="dateOfBirth" class="form-control" formControlName="dateOfBirth">
+            <div *ngIf="addStudent.get('dateOfBirth')?.errors && (addStudent.get('dateOfBirth')?.touched)" class="alert alert-danger">
+                <p *ngIf="addStudent.get('dateOfBirth')?.getError('required')">Date of Birth Required</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="form-data">
+            <label class="text-capitalize py-2" for="gender">Gender:</label>
+            <select id="gender" class="form-control" formControlName="gender">
+                <option value="" disabled selected>Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>`
+            <div *ngIf="addStudent.get('gender')?.errors && (addStudent.get('gender')?.touched)" class="alert alert-danger">
+          <p *ngIf="addStudent.get('gender')?.getError('required')">Gender Required</p>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12">
+    <div class="form-data">
+        <label class="text-capitalize py-2" for="address">Address:</label>
+        <textarea id="address" rows="3" class="form-control" formControlName="address"></textarea>
+        <div *ngIf="addStudent.get('address')?.errors && (addStudent.get('address')?.touched)" class="alert alert-danger">
+            <p *ngIf="addStudent.get('address')?.getError('required')">Address Required</p>
+        </div>
+    </div>
+</div>
+    
+    <div class="col-md-12">
+        <div class="form-data">
+            <label class="text-capitalize py-2" for="email">Email:</label>
+            <input type="email" id="email" class="form-control" formControlName="email">
+            <div *ngIf="addStudent.get('email')?.errors && (addStudent.get('email')?.touched)" class="alert alert-danger">
+                <p *ngIf="addStudent.get('email')?.getError('required')">Email Required</p>
+                <p *ngIf="addStudent.get('email')?.getError('email')">Invalid Email Format</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="form-data">
+         <label class="text-capitalize py-2" for="phoneNumber">phoneNumber :</label>
+         <input type="text" id="phoneNumber" class="form-control" formControlName="phoneNumber" #phoneNumber>
+         <div *ngIf="addStudent.get('phoneNumber')?.errors &&(addStudent.get('phoneNumber')?.touched || phoneNumber.value.length > 0) " class="alert alert-danger">
+             <p *ngIf="addStudent.get('phoneNumber')?.getError('required')" >phoneNumber Required</p>
+             <p *ngIf="addStudent.get('phoneNumber')?.getError('pattern')">not valid phoneNumber format</p>
+         </div> 
+        </div>
+     </div>
+    
+    <button [disabled]="addStudent.invalid" class="main-btn d-block ms-auto text-capitalize">
+        <i *ngIf="isLoading" class="fas fa-spinner"></i>
+        Add
+    </button>
+</form>
+
+</div>

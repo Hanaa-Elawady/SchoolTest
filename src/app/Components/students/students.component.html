@@ -1,0 +1,37 @@
+<section class="py-4" *ngIf="students?.length >0">
+    <h2 class="text-main fw-bolder mb-3 text-capitalize text-center">School Students</h2>
+        <div class="row g-0 row-cols-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-3 row-cols-sm-1 justify-content-center">
+            <div class="col card m-3" *ngFor="let item of students" style="position: relative;">
+                <div class="product p-3">
+                    <div>
+                        <h3 class="h6">Name :{{item.firstName}} {{item.lastName}}</h3>
+                        <h4 class="h6">Date Of Birth : {{ item.dateOfBirth | date: 'yyyy-MM-dd' }}</h4>
+                        <h4 class="h6">Email: {{item.email}}</h4>
+                        <h4 class="h6">Phone Number: {{item.phoneNumber}}</h4>
+                        <h4 class="h6">Address: {{item.address}}</h4>
+                        <h4 class="h6">gender: {{item.gender}}</h4>
+                        <h4 class="h6">Subjects:
+                            <ul *ngIf="item.subjectsId?.length > 0; else noSubjects">
+                                <li *ngFor="let id of item.subjectsId">
+                                    {{ mapSubjects(id) }}
+                                </li>
+                            </ul>
+                            <ng-template #noSubjects>
+                                <p>No Subjects enrolled</p>
+                            </ng-template>
+                            
+                        </h4>
+
+                        <div class="d-flex position-absolute end-0 bottom-0">
+                            <button class="btn m-3 p-0" (click)="delete(item.id)"> <i class="fa-solid fa-trash"></i></button>
+                            <button class="btn m-3 p-0" [routerLink]="['/UpdateStudent', item.id]"> <i class="fa-regular fa-pen-to-square"></i></button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col card m-3 d-flex justify-content-center align-items-center" role="button" [routerLink]="['/AddStudent']">
+                <i class="fa-solid fa-plus"></i>                  
+        </div>
+    </div>
+</section>
