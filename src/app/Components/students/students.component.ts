@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Subject } from 'src/app/Shared/Interfaces/subject';
 import { BlankService } from 'src/app/Shared/Services/blank.service';
 
 @Component({
@@ -10,7 +9,7 @@ import { BlankService } from 'src/app/Shared/Services/blank.service';
 export class StudentsComponent {
   constructor(private _BlankService:BlankService) { }
   students:any;
-  subjects:Subject[] = [];
+
   ngOnInit(): void {
     this.getData();
   }
@@ -21,18 +20,7 @@ export class StudentsComponent {
         this.students = response;
       }
     });
-    this._BlankService.getAllSubjects().subscribe({
-      next:(response)=>{
-        this.subjects = response;
-      }
-    })
   }
-
-      mapSubjects(subid: any): string {
-        const subject = this.subjects.find(sub => sub.id === subid);
-        return subject ? subject.name : 'Unknown Subject';
-      }
-    
 
   delete(subjectId :string):void{
     this._BlankService.deleteStudent(subjectId).subscribe({

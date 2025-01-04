@@ -39,7 +39,7 @@
                 <option value="" disabled selected>Select Gender</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
-            </select>`
+            </select>
             <div *ngIf="addStudent.get('gender')?.errors && (addStudent.get('gender')?.touched)" class="alert alert-danger">
           <p *ngIf="addStudent.get('gender')?.getError('required')">Gender Required</p>
         </div>

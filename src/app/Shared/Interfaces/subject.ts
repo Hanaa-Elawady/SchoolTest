@@ -3,5 +3,4 @@ export interface Subject {
     name: string,
     creditHours: number,
     description: string,
-
 }

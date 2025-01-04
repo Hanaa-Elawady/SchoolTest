@@ -42,7 +42,7 @@ export class RegisterComponent{
          this._AuthService.register(this.registerForm.value).subscribe({
            next:(response)=> {
                this.isLoading= false;  
-               this._Router.navigate(['auth/login']);
+               this._Router.navigate(['/login']);
            },
            error:(err)=>{
              this.msgError = err.error.message;
