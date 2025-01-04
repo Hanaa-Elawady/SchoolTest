@@ -59,7 +59,7 @@
 <div *ngFor="let item of data?.subjects">
     <div>
         <input type="text" name="SubjectName" [id]="item.id" disabled [value]="item.name">
-        <input type="number" [value]="item.grade" (change)="check( $event , item.subjectId)">
+        <input type="number" [value]="item.grade" (change)="EditGrade( $event , item.subjectId)">
         <button class="btn m-3 p-0" (click)="deleteSubject(item)"> <i class="fa-solid fa-trash"></i></button>
     </div>
 </div>

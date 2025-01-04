@@ -47,6 +47,7 @@ export class BlankService {
   }
 
   addStudent(StudentData:object):Observable<any>{
+    console.log(StudentData);
     const url = `${this.baseUrl}/Student/AddStudent`;
     return this._HttpClient.post(url ,StudentData);
   }

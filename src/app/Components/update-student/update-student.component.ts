@@ -74,7 +74,7 @@ AllSubjects :any ;
     })
   }
 
-  check(e:any , id:any)
+  EditGrade(e:any , id:any)
   {
     const subject = this.data.subjects.find((item: { subjectId: any; }) => item.subjectId == id);
     if (subject) {
